@@ -14,6 +14,7 @@ public class SearchService {
     public SearchService(StorageService storageService) {
         this.storageService = storageService;
     }
+
     public Collection<SearchResult> search(String seek) {
         if (seek == null || seek.trim().length() < 3) {
             return java.util.Collections.emptyList();
