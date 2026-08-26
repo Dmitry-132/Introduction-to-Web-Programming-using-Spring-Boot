@@ -1,5 +1,7 @@
 package org.skypro.skyshop.model.product;
 
+import org.skypro.skyshop.model.exception.NoSuchProductException;
+
 import java.util.UUID;
 
 public class DiscountedProduct extends Product {
@@ -11,10 +13,10 @@ public class DiscountedProduct extends Product {
     public DiscountedProduct(String productName, double basePrice, int discountInWholePercentages) throws IllegalArgumentException {
         super(productName);
         if (basePrice < 1) {
-            throw new IllegalArgumentException("Цена продукта должна быть выше или ровна 1");
+            throw new NoSuchProductException("Цена продукта должна быть выше или ровна 1");
         }
         if (discountInWholePercentages < 0 || discountInWholePercentages > 100) {
-            throw new IllegalArgumentException("процент скидки некорректен");
+            throw new NoSuchProductException("процент скидки некорректен");
         }
         this.basePrice = basePrice;
         this.discountInWholePercentages = discountInWholePercentages;
