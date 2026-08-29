@@ -1,5 +1,7 @@
 package org.skypro.skyshop.model.product;
 
+import org.skypro.skyshop.model.exception.NoSuchProductException;
+
 import java.util.UUID;
 
 public class SimpleProduct extends Product {
@@ -9,7 +11,7 @@ public class SimpleProduct extends Product {
     public SimpleProduct(String productName, double productPrice) throws IllegalArgumentException {
         super(productName);
         if (productPrice < 1) {
-            throw new IllegalArgumentException("Цена продукта должна быть выше или ровна 1");
+            throw new NoSuchProductException("Цена продукта должна быть выше или ровна 1");
         }
         this.productPrice = productPrice;
         this.id = UUID.randomUUID();
